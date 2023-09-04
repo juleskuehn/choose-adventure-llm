@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="border-bottom pb-1 mb-3">
+    <h1>Idea: {{ idea }}</h1>
+</div>
+<!-- 2 Columns, fill the height -->
+<div class="row">
+    <div class="col-6" id="llm-response">
+        LLM response placeholder
+        <form class="d-none" hx-post="/generate_text" hx-target="#llm-response" hx-trigger="load">
+            <input type="hidden" name="prompt" value="{{ prompt }}">
+        </form>
+    </div>
+    <div class="col-6" id="img-response">
+        Stable diffusion response placeholder
+    </div>
+</div>
+<!-- Fixed position at the bottom -->
+<div class="fixed-bottom container py-3 mb-1 border-top">
+    <!-- POST to the same URL as request -->
+    <form method="POST" action="{{ request.url }}">
+        <div class="row">
+            {{ form.hidden_tag() }}
+            <div class="col-2 col-form-label">{{ form.choice.label }}</div>
+            <div class="col">{{ form.choice }}</div>
+            <div class="col-auto">{{ form.submit }}</div>
+        </div>
+    </form>
+    <!-- You can add a div to display LLM responses during the conversation -->
+</div>
+{% endblock %}

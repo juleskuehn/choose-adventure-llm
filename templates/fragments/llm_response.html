@@ -1,0 +1,7 @@
+<div class="col-6" id="llm-response" hx-swap-oob="true">
+    <!-- Present the text as returned, without stripping newlines -->
+    <div style="white-space: pre-wrap;">{{ llm_response }}</div>
+    <form class="d-none" hx-post="/generate_image" hx-target="#img-response" hx-trigger="load">
+        <input type="hidden" name="prompt" value="{{ idea }}">
+    </form>
+</div>

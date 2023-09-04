@@ -1,0 +1,7 @@
+Flask
+Flask-WTF
+replicate
+openai
+tiktoken
+langchain
+python-dotenv
